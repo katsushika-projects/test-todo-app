@@ -34,3 +34,29 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+# データベースを動かす
+
+Dockerを使用できる環境であることを前提とします。
+
+下記のコマンドを実行してください．
+PostgreSQLのイメージを取得し、コンテナを起動するコマンドです．
+
+```bash
+docker pull postgres
+docker run --name drizzle-postgres -e POSTGRES_PASSWORD=mypassword -d -p 5432:5432 postgres
+```
+
+次に，ルートディレクトリに`.env`ファイルを作成し、以下の内容を記述してください．
+
+```env
+DATABASE_URL=postgres://postgres:mypassword@localhost:5432/postgres
+```
+
+データベースのマイグレーションを行うために、以下のコマンドを実行してください．
+
+```bash
+npx drizzle-kit push
+```
+
+以上です．
