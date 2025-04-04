@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "npx prettier --write \"app/**/*.{ts,tsx,js,json,css}\"",
+    "format:check": "npx prettier --check \"app/**/*.{ts,tsx,js,json,css}\""
   },
   "dependencies": {
     "dotenv": "^16.4.7",
@@ -28,6 +30,7 @@
     "eslint-config-next": "15.2.4",
     "tailwindcss": "^4",
     "tsx": "^4.19.3",
+    "prettier": "3.5.3",
     "typescript": "^5"
   }
 }
